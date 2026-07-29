@@ -1,16 +1,18 @@
 
 void setup() {
   Serial.begin(9600);
+  //Phase A Left Side
   pinMode(44, OUTPUT);
   pinMode(45, OUTPUT);
+  //Phase A Right Side
   pinMode(46, OUTPUT);
   pinMode(47, OUTPUT);
+  //Phase B Left Side
   pinMode(48, OUTPUT);
   pinMode(49, OUTPUT);
+  //Phase B Right Side
   pinMode(50, OUTPUT);
   pinMode(51, OUTPUT);
-
-  // put your setup code here, to run once:
 
 }
 
@@ -83,10 +85,6 @@ void loop() {
   delay(DELAY_TIME);
 #endif
 
-#ifndef MICRO_STEP
-
-
-#endif
 
 }
 
@@ -97,40 +95,4 @@ void all_off(){
   digitalWrite(46, HIGH); digitalWrite(47, LOW);
   digitalWrite(48, HIGH); digitalWrite(49, LOW);
   digitalWrite(50, HIGH); digitalWrite(51, LOW);
-}
-
-void a_positive(){
-  Serial.println("A pos");
-  all_off(); 
-  delayMicroseconds(10);
-  
-  digitalWrite(44, LOW);  // Phase A Left High-Side: ON (Inverted)
-  digitalWrite(47, HIGH); // Phase A Right Low-Side: ON (Normal)
-}
-
-void a_negative(){
-  Serial.println("A neg");
-  all_off(); 
-  delayMicroseconds(10);
-  
-  digitalWrite(46, LOW);  // Phase A Right High-Side: ON (Inverted)
-  digitalWrite(45, HIGH); // Phase A Left Low-Side: ON (Normal)
-}
-
-void b_positive(){
-  Serial.println("B pos");
-  all_off(); 
-  delayMicroseconds(10);
-  
-  digitalWrite(48, LOW);  // Phase B Left High-Side: ON (Inverted)
-  digitalWrite(51, HIGH); // Phase B Right Low-Side: ON (Normal)
-}
-
-void b_negative(){
-  Serial.println("B neg");
-  all_off(); 
-  delayMicroseconds(10);
-  
-  digitalWrite(50, LOW);  // Phase B Right High-Side: ON (Inverted)
-  digitalWrite(49, HIGH); // Phase B Left Low-Side: ON (Normal)
 }
